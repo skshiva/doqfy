@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="container col-xxl-8 px-4 py-5">
+    <h3 class='text-center text-muted mb-3'>Flask - SQLite CRUD Application</h3>
+    <p class='text-right'><a href='{{url_for("add_url")}}' class='btn btn-success '>Add URL</a></p>
+    <p class='text-right'><a href='{{url_for("add_snippet")}}' class='btn btn-success '>Add Snippet</a></p>
+    <table class='table table-bordered'>
+        <thead>
+        <th>SNo</th>
+        <th>Short URL</th>
+        <th>Full URL</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        </thead>
+        <tbody>
+        {% for row in url_list %}
+        <tr>
+            <td>{{row.id}}</td>
+            <td>{{row.short_url}}</td>
+            <td>{{row.original_url}}</td>
+            <td><a href='{{url_for("share_url", uid=row.id)}}' class='btn btn-success'>Share</a></td>
+            <td><a href='{{url_for("edit_url",uid=row.id)}}' class='btn btn-primary'>Edit</a></td>
+            <td><a href='{{url_for("delete_url",uid=row.id)}}' class='btn btn-danger'
+                   onclick='return confirm("Are You Sure")'>Delete</a></td>
+        </tr>
+        {%endfor%}
+        </tbody>
+    </table>
+    <table class='table table-bordered'>
+        <thead>
+        <th>SNo</th>
+        <th>Short URL</th>
+        <th>Full URL</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        </thead>
+        <tbody>
+        {% for row in snippets %}
+        <tr>
+            <td>{{row.id}}</td>
+            <td>{{row.content}}</td>
+            <td>{{row.short_url}}</td>
+            <td><a href='{{url_for("view_snippet",uid=row.id)}}' class='btn btn-warning'>View</a></td>
+        </tr>
+        {%endfor%}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

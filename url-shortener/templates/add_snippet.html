@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+{% block body %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Add Snippet</li>
+    </ol>
+</nav>
+<div class='row'>
+    <div class='col-5 mx-auto'>
+        <div class="card">
+            <div class="card-header">
+                Add Snippet
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('add_snippet') }}">
+                    <div class="card-body">
+                        <div class='form-group'>
+                            <label for="content">Snippet Content:</label>
+                            <textarea id="content" name="content" rows="5" cols="50" required
+                                      class='form-control'></textarea>
+                        </div>
+                        <div class='form-group'>
+                            <label for="secret_key">Secret Key (optional):</label>
+                            <input type="text" id="secret_key" name="secret_key"
+                                   placeholder="Enter a secret key to encrypt content" class='form-control'>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <input type='submit' value='Add Snippet' class='btn btn-primary'>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

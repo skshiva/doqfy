@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block body %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Add Snippet</li>
+    </ol>
+</nav>
+<form method="POST" action="{{ url_for('view_snippet', short_url=request.path.split('/')[-1]) }}">
+    <label for="secret_key">Secret Key:</label><br>
+    <input type="text" id="secret_key" name="secret_key" required><br><br>
+
+    <button type="submit">View Snippet</button>
+</form>
+{% endblock %}
